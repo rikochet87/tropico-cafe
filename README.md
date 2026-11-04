@@ -15,6 +15,9 @@ Incluye una carta completa en un panel lateral.
 
 ## Cómo verlo
 
+Online: **https://rikochet87.github.io/tropico-cafe/**
+
+
 Es un único archivo, sin compilación: abrí `index.html` en el navegador o publicalo en cualquier hosting estático
 (GitHub Pages, Netlify, Vercel). Three.js y las fuentes se cargan desde CDN.
 
