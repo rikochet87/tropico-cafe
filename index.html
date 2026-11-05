@@ -395,6 +395,7 @@ const PD=[-3.0,0,3.0,3.3,.9];
  [-7.38,-6.4,-5.44,-4.48,-3.54].forEach(x=>box(.08,3.82,.12,mWood,x,1.91,-SD-.15));
  [.05,2.95,3.78].forEach(y=>box(3.96,.08,.12,mWood,-5.46,y,-SD-.15));
  const f=frame(PD,.16,.36,mTerra);f.position.z=-SD-.33;scene.add(f);}
+box(10.7,.014,.44,mTerraDeep,-2.15,.007,-SD-.15);
 // puertas de vidrio abiertas hacia el patio
 [[-3.0,1],[3.0,-1]].forEach(([x,s])=>{const g=new THREE.Group();g.position.set(x,0,-SD-.15);g.rotation.y=s*1.35;scene.add(g);
  box(.06,2.5,.06,mWood,s*.03,1.25,0,g);box(.06,2.5,.06,mWood,s*1.47,1.25,0,g);box(1.5,.06,.06,mWood,s*.75,2.5,0,g);box(1.5,.1,.06,mWood,s*.75,.05,0,g);
@@ -468,12 +469,12 @@ box(.94,.04,IZL+.08,M(0xece6dc,{roughness:.35}),IX,.88,IZC);
  const printTex=tex(128,128,(g,w,h)=>{g.fillStyle='#fbfaf6';g.fillRect(0,0,w,h);g.fillStyle='#2f6b3a';g.beginPath();g.ellipse(w/2,h*.36,13,8,0,0,7);g.fill();g.fillStyle='#3a3a3a';for(let r=0;r<5;r++)g.fillRect(w/2-18+(r%2)*3,h*.48+r*6,36-(r%2)*6,2.5);});
  const printTex2=tex(128,128,(g,w,h)=>{g.fillStyle='#fbfaf6';g.fillRect(0,0,w,h);g.fillStyle='#3a3a3a';g.fillRect(w*.6,h*.3,14,3);});
  const mTee1=M(0xffffff,{map:printTex,side:THREE.DoubleSide,roughness:.95}),mTee2=M(0xffffff,{map:printTex2,side:THREE.DoubleSide,roughness:.95});
- [IZ0-.75,IZ0-1.5,IZC-.6,IZ1+.55].forEach((z,k)=>{const g=new THREE.Mesh(teeGeo,k%2?mTee2:mTee1);g.position.set(IX+.02,2.33,z);g.rotation.y=Math.PI/2;g.castShadow=true;scene.add(g);
-   const hg=new THREE.Mesh(new THREE.TorusGeometry(.2,.008,6,16,Math.PI*.9),mWoodLight);hg.position.set(IX+.025,2.2,z);hg.rotation.set(0,Math.PI/2,Math.PI*.05);scene.add(hg);});
+ [IZ0-.75,IZ0-1.5,IZC-.6,IZ1+.55].forEach((z,k)=>{const g=new THREE.Mesh(teeGeo,k%2?mTee2:mTee1);g.position.set(IX+.02+(k%2)*.018,2.33,z);g.rotation.y=Math.PI/2;g.castShadow=true;scene.add(g);
+   const hg=new THREE.Mesh(new THREE.TorusGeometry(.2,.008,6,16,Math.PI*.9),mWoodLight);hg.position.set(IX+.025+(k%2)*.018,2.2,z);hg.rotation.set(0,Math.PI/2,Math.PI*.05);scene.add(hg);});
  // tote bags colgadas en los extremos
  const totes=[0xc49a6c,0xd9c3a0,0xb5651f];
- [[IZ0-.22,0],[IZ0-.42,1],[IZ1+.22,2],[IZ1+.42,0]].forEach(([z,k])=>{box(.04,.42,.34,M(totes[k],{roughness:.95}),IX+.38,1.95,z);
-   const st=add(new THREE.TorusGeometry(.12,.008,6,16,Math.PI),M(totes[k]),IX+.38,2.16,z);st.rotation.y=Math.PI/2;});
+ [[IZ0-.22,0],[IZ0-.42,1],[IZ1+.22,2],[IZ1+.42,0]].forEach(([z,k],j)=>{const tx=IX+.38-(j%2)*.06;box(.04,.42,.34,M(totes[k],{roughness:.95}),tx,1.95,z);
+   const st=add(new THREE.TorusGeometry(.12,.008,6,16,Math.PI),M(totes[k]),tx,2.16,z);st.rotation.y=Math.PI/2;});
 }
 // estantes redondos blancos en la punta hacia el fondo
 const PX0=IX+.43, PZ1r=IZ1-.02;
@@ -568,7 +569,7 @@ barG.updateMatrixWorld(true);
 
 /* ================= PATIO ================= */
 const PZ0=-SD-.3, PZ1=-21, PZC=(PZ0+PZ1)/2, PL=PZ0-PZ1;
-const gravel=tex(256,256,(g,w,h)=>{g.fillStyle='#8f897f';g.fillRect(0,0,w,h);for(let i=0;i<3000;i++){g.fillStyle=`hsl(32,${4+Math.random()*7}%,${38+Math.random()*42}%)`;g.beginPath();g.arc(Math.random()*w,Math.random()*h,rnd(.8,2.4),0,7);g.fill();}},[7,5]);
+const gravel=tex(256,256,(g,w,h)=>{g.fillStyle='#8f897f';g.fillRect(0,0,w,h);for(let i=0;i<3000;i++){g.fillStyle=`hsl(32,${4+Math.random()*7}%,${47+Math.random()*24}%)`;g.beginPath();g.arc(Math.random()*w,Math.random()*h,rnd(.8,2.4),0,7);g.fill();}},[7,5]);
 const tiles=tex(256,128,(g,w,h)=>{g.fillStyle='#b9b3a2';g.fillRect(0,0,w,h);for(let r=0;r<2;r++)for(let c=0;c<8;c++){g.fillStyle=`hsl(${60+Math.random()*20},${10+Math.random()*6}%,${74+Math.random()*6}%)`;g.fillRect(c*32+1,r*64+1,30,62);}},[12,1]);
 const mConcrete=M(0xd8d2c6,{roughness:.95}), mTile=M(0xffffff,{map:tiles,roughness:.5}), mGreenCush=M(0x9fb08f,{roughness:.95});
 {const f=add(new THREE.PlaneGeometry(IW*2,PL),M(0xffffff,{map:gravel,roughness:1}),0,.004,PZC);f.rotation.x=-Math.PI/2;f.castShadow=false;}
