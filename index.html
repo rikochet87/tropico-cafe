@@ -283,12 +283,12 @@ const redrawLogos=()=>[signTex,backSignTex,(()=>{try{return lettersTex;}catch(e)
 document.fonts&&Promise.all(['800 100px "Bricolage Grotesque"','700 50px "Bricolage Grotesque"','600 50px "Bricolage Grotesque"'].map(f=>document.fonts.load(f))).then(()=>{redrawable.forEach(t=>{t.userData.draw(t.userData.g,t.userData.c.width,t.userData.c.height);t.needsUpdate=true;});}).catch(()=>{});
 
 /* ---------- materiales ---------- */
-const mCream=M(0xe8d6bb,{roughness:.92}),mCreamIn=M(0xe4d3bd),mTerra=M(0xa9461f,{roughness:.8}),mTerraDeep=M(0x83321a,{roughness:.8});
+const mCream=M(0xe8d6bb,{roughness:.92}),mCreamIn=M(0xede4d6),mTerra=M(0xa9461f,{roughness:.8}),mTerraDeep=M(0x83321a,{roughness:.8});
 const mWood=M(0xffffff,{map:woodTex,roughness:.55}),mChair=M(0xb4511f,{roughness:.5,metalness:.2}),mCushion=M(0xf1ece4,{roughness:.95}),mChairDef=mChair,mCushDef=mCushion;
 const mBlack=M(0x1f1b19,{roughness:.5,metalness:.3}),mDark=M(0x2a1a14,{roughness:.6});
 const mGlass=new THREE.MeshStandardMaterial({color:0xfff2dc,roughness:.05,metalness:.2,transparent:true,opacity:.14,depthWrite:false,side:THREE.DoubleSide});
 const mTerrazzo=M(0xffffff,{map:terrazzo,roughness:.4});
-const mLeaf=M(0x3f7a35,{roughness:.55,side:THREE.DoubleSide}),mLeaf2=M(0x5f9446,{roughness:.6,side:THREE.DoubleSide}),mCanopy=M(0x6f9a45,{roughness:.7,side:THREE.DoubleSide});
+const mLeaf=M(0x4f9140,{roughness:.55,side:THREE.DoubleSide}),mLeaf2=M(0x74ad52,{roughness:.6,side:THREE.DoubleSide}),mCanopy=M(0x80ad4e,{roughness:.7,side:THREE.DoubleSide});
 const mMetal=M(0xd9d6d2,{roughness:.3,metalness:.35});
 
 /* ---------- vegetación ---------- */
@@ -335,7 +335,7 @@ const facade=wallWithHoles(-7.8,7.8,-.06,3.95,[grow(OW1),DOOR,grow(OW2),SIDE],.3
   [-1,0,1].forEach(k=>chair(cx+k*1.25,.82,Math.PI,true));
 });
 // puerta: marco de madera, panel tallado, hoja vidriada
-box(.12,3.95,.24,mWood,-.78,1.975,-.08);box(.12,3.95,.24,mWood,.78,1.975,-.08);
+box(.14,3.95,.24,mWood,-.78,1.975,-.08);box(.14,3.95,.24,mWood,.78,1.975,-.08);
 add(new THREE.PlaneGeometry(1.44,.9),M(0xffffff,{map:carved,roughness:.6}),0,3.42,-.12);
 box(1.44,.08,.2,mWood,0,2.93,-.1);
 const door=new THREE.Group();door.position.set(.7,0,-.17);scene.add(door);
@@ -428,12 +428,12 @@ const panelGeo=(w,d)=>{const s=roundRect(new THREE.Shape(),-w/2,-d/2,w,d,.35);co
 const mPanel=M(0xfbf7f0,{roughness:.95});
 [[-5.6,-3.0,2.6],[-3.55,-3.0,1.3],[-5.6,-5.4,2.6],[-3.55,-5.4,1.3],[-5.6,-7.8,2.6],[-2.7,-7.8,2.4],[-.2,-6.8,1.9]].forEach(([x,z,w])=>{add(panelGeo(w,1.7),mPanel,x,4.0,z,null,false);});
 // lámparas plisadas sobre las mesas del sillón
-[-2.2,-4.2,-6.2,-8.2].forEach(z=>{cyl(.004,.004,1.6,mDark,-6.25,3.4,z,4);const sh=add(new THREE.CylinderGeometry(.24,.28,.32,40,1,true),M(0xffffff,{map:pleat,emissive:0xffd9a8,emissiveIntensity:.55,side:THREE.DoubleSide,roughness:.9}),-6.25,2.45,z,null,false);const l=new THREE.PointLight(0xffd8a0,.45,3,1.6);l.position.set(-6.25,2.3,z);scene.add(l);});
+[-2.2,-4.2,-6.2,-8.2].forEach(z=>{cyl(.008,.008,1.6,mDark,-6.25,3.4,z,4);const sh=add(new THREE.CylinderGeometry(.24,.28,.32,40,1,true),M(0xffffff,{map:pleat,emissive:0xffd9a8,emissiveIntensity:.55,side:THREE.DoubleSide,roughness:.9}),-6.25,2.45,z,null,false);const l=new THREE.PointLight(0xffd8a0,.45,3,1.6);l.position.set(-6.25,2.3,z);scene.add(l);});
 // lámparas de cobre arrugado en racimo
 function cloudGeo(seed){const g=new THREE.IcosahedronGeometry(1,5),p=g.attributes.position,v=new THREE.Vector3();for(let i=0;i<p.count;i++){v.fromBufferAttribute(p,i).normalize();const n=Math.sin(v.x*5+seed)*Math.sin(v.y*6+seed*2)*.13+Math.sin(v.z*7+v.x*3+seed)*.1+Math.sin((v.x+v.y)*12+seed)*.05+Math.sin(v.y*19+v.z*9)*.03;v.multiplyScalar(1+n);v.y*=.55;p.setXYZ(i,v.x,v.y,v.z);}g.computeVertexNormals();return g;}
-const lampMat=M(0xc4692e,{emissive:0xff7a24,emissiveIntensity:.5,roughness:.7,metalness:.2,transparent:true,opacity:.92,side:THREE.DoubleSide});
+const lampMat=M(0xc4692e,{emissive:0xff7a24,emissiveIntensity:.5,roughness:.7,metalness:.2,side:THREE.DoubleSide});
 const lamps=[];
-[[-.9,3.3,-8.3,.46,5.5],[-4.4,3.35,-1.4,.42,7.1],[-3.7,3.25,-6.0,.44,2.6]].forEach(([x,y,z,s,seed])=>{const g=new THREE.Group();g.position.set(x,y,z);const m=new THREE.Mesh(cloudGeo(seed),lampMat);m.scale.setScalar(s);g.add(m);const c=new THREE.Mesh(new THREE.CylinderGeometry(.005,.005,4.2-y,4),mDark);c.position.y=(4.2-y)/2;g.add(c);const l=new THREE.PointLight(0xffa04a,.8,6,1.6);g.add(l);g.userData={seed};scene.add(g);lamps.push(g);});
+[[-.9,3.3,-8.3,.46,5.5],[-4.4,3.35,-1.4,.42,7.1],[-3.7,3.25,-6.0,.44,2.6]].forEach(([x,y,z,s,seed])=>{const g=new THREE.Group();g.position.set(x,y,z);const m=new THREE.Mesh(cloudGeo(seed),lampMat);m.scale.setScalar(s);g.add(m);const c=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,4.2-y,6),mDark);c.position.y=(4.2-y)/2;g.add(c);const l=new THREE.PointLight(0xffa04a,.8,6,1.6);g.add(l);g.userData={seed};scene.add(g);lamps.push(g);});
 
 // ---- isla del concept store: frente a la vitrina, lado izquierdo ----
 const IX=-1.55, IZ0=-1.5, IZ1=-4.6, IZL=IZ0-IZ1, IZC=(IZ0+IZ1)/2;
@@ -491,7 +491,7 @@ chair(-.15,-3.72,0,false,mOrange,mOrange);chair(-.15,-2.38,Math.PI,false,mOrange
  const mT1=M(0xd8743c,{map:rib,roughness:.7}),mT2=M(0xf2e9da,{map:rib,roughness:.7});
  for(let i=0;i<46;i++){const len=rnd(.45,1.05),x=IX+rnd(-1.0,1.0),z=rnd(IZ0-.1,IZ1-.6),bot=rnd(2.9,3.6);
    const t=add(new THREE.CylinderGeometry(.07,.07,len,14,1),i%3?mT2:mT1,x,bot+len/2,z,null,false);t.castShadow=false;
-   const c=add(new THREE.CylinderGeometry(.003,.003,4.2-bot-len,3),mDark,x,(4.2+bot+len)/2,z,null,false);}}
+   const c=add(new THREE.CylinderGeometry(.007,.007,4.2-bot-len,5),mDark,x,(4.2+bot+len)/2,z,null,false);}}
 // riel de spots negros
 box(.05,.05,3.8,mBlack,IX+1.0,4.12,IZC-.3);
 for(let i=0;i<5;i++){const z=IZ0-.2-i*.8;const sp=add(new THREE.CylinderGeometry(.045,.04,.14,12),mBlack,IX+1.0,4.02,z,null,false);sp.rotation.z=.6;}
@@ -578,7 +578,7 @@ box(15,.16,1.4,mCream,0,4.75,PZ0-.7);
 for(let i=0;i<46;i++)box(.07,1.0,.05,mTerra,-7+i*.31,5.35,PZ0-1.35);
 box(14.4,.08,.08,mTerra,0,5.86,PZ0-1.35);
 // ventilador de pared
-{const g=new THREE.Group();g.position.set(4.3,3.3,PZ0-.12);scene.add(g);const c=new THREE.Mesh(new THREE.CylinderGeometry(.36,.36,.12,24,1,true),M(0x222222,{wireframe:true}));c.rotation.x=Math.PI/2;c.position.z=-.22;g.add(c);box(.12,.12,.18,mBlack,0,0,-.09,g);}
+{const g=new THREE.Group();g.position.set(4.3,3.3,PZ0-.12);scene.add(g);[.36,.25,.14].forEach(r=>{const c=new THREE.Mesh(new THREE.TorusGeometry(r,.012,6,40),mBlack);c.position.z=-.22;g.add(c);});for(let i=0;i<8;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(.72,.018,.018),mBlack);b.rotation.z=i*Math.PI/8;b.position.z=-.22;g.add(b);}box(.12,.12,.18,mBlack,0,0,-.09,g);}
 // revestimiento de azulejos y bancos de material
 add(new THREE.PlaneGeometry(IW*2,1.15),mTile,0,.58,PZ1+.01,null,false);
 {const t=add(new THREE.PlaneGeometry(PL,1.15),mTile,IW-.01,.58,PZC,null,false);t.rotation.y=-Math.PI/2;}
@@ -632,9 +632,18 @@ const hemi=new THREE.HemisphereLight(0xdfeaf0,0x7a5a42,.6);scene.add(hemi);
 const sun=new THREE.DirectionalLight(0xffdcaa,1.55);const sunOff=new THREE.Vector3(-9,12,9);sun.target.position.set(0,1,2);sun.position.copy(sun.target.position).add(sunOff);scene.add(sun,sun.target);
 sun.castShadow=true;sun.shadow.mapSize.set(mobile?1024:2048,mobile?1024:2048);
 Object.assign(sun.shadow.camera,{left:-13,right:13,top:11,bottom:-9,near:1,far:45});sun.shadow.bias=-.0006;sun.shadow.normalBias=.02;
-const salonL=new THREE.PointLight(0xffc98f,1.1,12,1.3);salonL.position.set(-3,3.3,-5);scene.add(salonL);
+const salonL=new THREE.PointLight(0xffdcb8,1.15,12,1.3);salonL.position.set(-3,3.3,-5);scene.add(salonL);
 const barL=new THREE.PointLight(0xfff0d8,1.0,6,1.5);barL.position.set(3.6,2.9,-3.6);scene.add(barL);
-const winL=new THREE.PointLight(0xffd9a8,.7,7,1.5);winL.position.set(0,2.6,-1.2);scene.add(winL);
+const winL=new THREE.PointLight(0xffe6c8,.7,7,1.5);winL.position.set(0,2.6,-1.2);scene.add(winL);
+
+// Los hex de materiales/luces están en sRGB; three r128 los toma como lineales y el render sale lavado.
+{const seen=new Set();scene.traverse(o=>{if(o.isLight){o.color.convertSRGBToLinear();if(o.groundColor)o.groundColor.convertSRGBToLinear();}
+  (Array.isArray(o.material)?o.material:o.material?[o.material]:[]).forEach(m=>{if(seen.has(m))return;seen.add(m);m.color&&m.color.convertSRGBToLinear();m.emissive&&m.emissive.convertSRGBToLinear();});});
+ scene.fog.color.convertSRGBToLinear();}
+// ejes de la cámara de sombras: mover el objetivo de a un texel evita que las sombras se arrastren
+const shAx=(()=>{const z=sunOff.clone().normalize(),x=new THREE.Vector3(0,1,0).cross(z).normalize(),y=z.clone().cross(x);return {x,y,z,tx:26/sun.shadow.mapSize.x,ty:20/sun.shadow.mapSize.y};})();
+const _st=new THREE.Vector3();
+function snapTarget(x,y,z){_st.set(x,y,z);const a=Math.round(_st.dot(shAx.x)/shAx.tx)*shAx.tx,b=Math.round(_st.dot(shAx.y)/shAx.ty)*shAx.ty,c=_st.dot(shAx.z);sun.target.position.copy(shAx.x).multiplyScalar(a).addScaledVector(shAx.y,b).addScaledVector(shAx.z,c);sun.target.updateMatrixWorld();}
 
 /* ---------- recorrido de cámara ---------- */
 const V=(x,y,z)=>new THREE.Vector3(x,y,z);
@@ -665,11 +674,11 @@ function frameLoop(){
   camera.lookAt(q.x+mx*.5,q.y-my*.3,q.z);
   door.rotation.y=-1.65*sstep(.089,.213,cur);
   lamps.forEach(g=>{g.rotation.z=Math.sin(t*.7+g.userData.seed)*.035;g.children[0].rotation.y=t*.07;});
-  canopies.forEach((c,i)=>{c.rotation.y=Math.sin(t*.5+i)*.006;c.position.x=Math.sin(t*.8+i)*.04;});
+  canopies.forEach((c,i)=>{c.rotation.y=Math.sin(t*.35+i)*.003;c.position.x=Math.sin(t*.45+i)*.015;});
   // al entrar, el sol deja de importar y manda la luz cálida del salón
   const inside=sstep(.178,.32,cur)*(1-sstep(.769,.876,cur)),patio=sstep(.769,.876,cur);
   hemi.intensity=.6-.4*inside;sun.intensity=1.55*(1-.9*inside);renderer.toneMappingExposure=.95+.12*inside;
-  sun.target.position.set(0,1,2-18*patio);sun.position.copy(sun.target.position).add(sunOff);
+  snapTarget(0,1,2-18*patio);sun.position.copy(sun.target.position).add(sunOff);
   renderer.render(scene,camera);
   let active=0;
   chaps.forEach((ch,i)=>{const w=.085;let o=Math.min(1,Math.max(0,(w-Math.abs(cur-ch.c))/(w*.5)));if(ch.first&&cur<ch.c)o=1;if(ch.last&&cur>ch.c)o=1;ch.o=o;ch.el.style.opacity=o.toFixed(3);ch.el.style.transform=`translateY(${(1-o)*18}px)`;ch.el.style.pointerEvents=o>.5?'auto':'none';});
