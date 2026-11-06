@@ -68,6 +68,6 @@ docs/img/                          screenshots for this page
 
 <div align="center">
 
-**Matías Rosello** · [GitHub](https://github.com/rikochet87) · rosellomatias87@gmail.com
+**Matías Roselló** · [GitHub](https://github.com/rikochet87) · rosellomatias87@gmail.com
 
 </div>
