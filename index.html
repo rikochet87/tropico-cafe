@@ -114,7 +114,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offse
 .it span{display:block;font-size:14px;color:#6e4a38;margin-top:2px}
 .ml{font-family:var(--f-mono);font-size:12px;color:#6e4a38;margin:14px 0 0;letter-spacing:.04em}
 .carta-foot{margin-top:30px;padding-top:16px;border-top:1px solid rgba(43,22,13,.2);font-size:14px;color:#6e4a38}
-.nogl .track,.nogl .pins,.nogl .rail{display:none}
+
+/* Personajes */
+.avtags{position:fixed;inset:0;z-index:4;pointer-events:none}
+.avtag{position:absolute;left:0;top:0;opacity:0;display:flex;flex-direction:column;align-items:center;gap:1px;cursor:pointer;
+  background:var(--ink);color:var(--cream);border:1px solid var(--glow);border-radius:14px;padding:6px 12px 7px;font:inherit;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.avtag b{font-family:var(--f-display);font-weight:800;font-size:15px;letter-spacing:-.01em;line-height:1.1}
+.avtag small{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--glow)}
+.avtag::after{content:"";position:absolute;left:50%;bottom:-7px;width:12px;height:12px;margin-left:-6px;background:var(--ink);border-right:1px solid var(--glow);border-bottom:1px solid var(--glow);transform:rotate(45deg)}
+.avtag:hover{background:#3a2116}
+.avcard{position:fixed;z-index:15;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(4vh + env(safe-area-inset-bottom,0px));width:min(360px,calc(100% - 40px));
+  background:#f6ecdf;color:#2b160d;border-radius:22px;padding:22px 22px 20px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.avcard-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.avcard-head p{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a9461f}
+.avcard-head h3{margin:4px 0 0;font-family:var(--f-display);font-weight:800;font-size:32px;letter-spacing:-.03em;line-height:1}
+.avcard-close{font:600 13px/1 var(--f-body);background:#2b160d;color:#f6ecdf;border:0;border-radius:999px;padding:9px 13px;cursor:pointer;flex:none}
+.avcard-hello{margin:14px 0 0;font-size:16px;line-height:1.45;background:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px}
+.avcard-soon{margin:14px 0 0;font-size:13px;color:#6e4a38}
+.avcard ul{margin:6px 0 0;padding-left:18px;font-size:14px;color:#2b160d}
+.avcard ul li{margin:3px 0}
+.avcard-input{display:flex;gap:8px;margin-top:14px}
+.avcard-input input{flex:1;min-width:0;font:inherit;font-size:14px;border:1px solid rgba(43,22,13,.2);border-radius:999px;padding:10px 14px;background:#efe4d6;color:#6e4a38}
+.avcard-input button{font:600 13px/1 var(--f-body);border:0;border-radius:999px;padding:0 14px;background:#d9c7b4;color:#6e4a38}
+@media (max-width:560px){.avcard{right:auto;left:max(16px,env(safe-area-inset-left,0px));width:calc(100% - 32px);bottom:calc(12px + env(safe-area-inset-bottom,0px))}}
+.nogl .track,.nogl .pins,.nogl .rail,.nogl .avtags{display:none}
 .nogl .chap{position:relative;left:auto;bottom:auto;opacity:1;pointer-events:auto;margin:24px auto;display:block}
 .nogl .chap.hero{margin-top:120px}
 </style>
@@ -141,6 +164,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offse
 <section class="chap" data-c="0.444" data-name="Vitrina">
   <p class="eyebrow">Apenas entrás, a la derecha</p>
   <h2>La vitrina del día.</h2>
+  <p class="soft">Cami y Nico te atienden. Tocalos para conocerlos.</p>
   <ul class="drinks">
     <li><span>Espresso</span><span>doble</span></li>
     <li><span>Flat white</span><span>ristretto</span></li>
@@ -160,7 +184,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offse
 <section class="chap" data-c="0.667" data-name="Salón">
   <p class="eyebrow">El salón</p>
   <h2>Sillones, arcos de luz y lámparas de cobre.</h2>
-  <p class="soft">Mesas de madera junto al sillón largo, nichos de ladrillo blanco con aros de luz y plantas sobre el respaldo.</p>
+  <p class="soft">Mesas de madera junto al sillón largo, nichos de ladrillo blanco con aros de luz y plantas sobre el respaldo. Flor te reserva la mesa.</p>
 </section>
 
 <section class="chap" data-c="0.889" data-name="Patio">
@@ -198,6 +222,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offse
     <section class="cat" id="c-salado"><h3>Salado y brunch <small></small></h3><div class="items"><div class="it"><b>Tostado de jamón y queso</b><span>En pan de molde de masa madre.</span></div><div class="it"><b>Croissant jamón y queso</b><span>Caliente, en manteca.</span></div><div class="it"><b>Avocado toast</b><span>Palta, huevo y semillas en pan de masa madre.</span></div><div class="it"><b>Sándwiches de miga</b><span>Triples de jamón y queso.</span></div><div class="it"><b>Tostadas</b><span>Con queso crema y mermelada casera.</span></div><div class="it"><b>Yogur con granola</b><span>Con frutas de estación y miel.</span></div></div></section>
     <p class="carta-foot">La carta cambia según la temporada. Precios y novedades en <a href="https://www.instagram.com/tropicocafe.ar/" target="_blank" rel="noopener">@tropicocafe.ar</a>.</p>
   </div>
+</div>
+<div class="avtags" id="avtags" aria-label="Personal de Trópico"></div>
+<div class="avcard" id="avcard" hidden role="dialog" aria-labelledby="avcard-n">
+  <div class="avcard-head"><div><p data-av-role>Rol</p><h3 id="avcard-n" data-av-name>Nombre</h3></div><button class="avcard-close" type="button">Cerrar</button></div>
+  <p class="avcard-hello" data-av-hello></p>
+  <p class="avcard-soon">Muy pronto voy a poder:</p>
+  <ul data-av-soon></ul>
+  <div class="avcard-input"><input id="avcard-msg" type="text" placeholder="El chat se habilita muy pronto" disabled aria-label="Mensaje"><button type="button" disabled>Enviar</button></div>
 </div>
 <div class="pins" id="pins"></div>
 <main class="track" aria-hidden="true"></main>
@@ -628,6 +660,130 @@ add(new THREE.PlaneGeometry(4.2,1.12),new THREE.MeshStandardMaterial({map:letter
   if(i<4)chair(x,z+.7,Math.PI,false,mOrange,mOrange);else chair(x-.7,z,Math.PI/2,false,mOrange,mOrange);});
 [[1.0,-13.4],[-3.0,-13.8]].forEach(([x,z])=>{cafeTable(x,z,mOrange,false);chair(x-.66,z,Math.PI/2,false,mOrange,mOrange);chair(x+.66,z,-Math.PI/2,false,mOrange,mOrange);});
 
+/* ================= PERSONAJES (futuros agentes) ================= */
+// mesada de trabajo detrás de la vitrina, con máquina de espresso
+{const mTop=M(0xf2efe9,{roughness:.3}),body=M(0xe9e5df,{roughness:.22,metalness:.45});
+ box(.6,.88,2.6,M(0xffffff,{map:slatBase,roughness:.6}),4.88,.44,-2.9);box(.66,.04,2.66,mTop,4.86,.9,-2.9);
+ const g=new THREE.Group();g.position.set(4.92,.92,-3.25);g.rotation.y=-Math.PI/2;scene.add(g);
+ box(.7,.4,.46,body,0,.2,0,g);box(.78,.03,.5,M(0x2b2b2b,{roughness:.35}),0,.415,0,g);
+ box(.04,.4,.48,mOrange,-.37,.2,0,g);box(.04,.4,.48,mOrange,.37,.2,0,g);
+ [-.18,.18].forEach(o=>{cyl(.04,.05,.07,body,o,.0,.27,16,g);const d=add(new THREE.CylinderGeometry(.035,.035,.006,20),M(0xf8f6f0),o,.3,.235,g);d.rotation.x=Math.PI/2;});
+ cyl(.08,.1,.3,M(0x2b2b2b,{metalness:.4,roughness:.4}),-.75,.15,0,16,g);cyl(.12,.05,.18,M(0x7a4a2a,{transparent:true,opacity:.75,roughness:.2}),-.75,.39,0,16,g);
+ for(let i=0;i<4;i++)cyl(.045,.035,.08,M(0xf7f5f0,{roughness:.2}),.55+(i%2)*.1,.04,-.08+Math.floor(i/2)*.12,14,g);}
+
+const avatars=[];
+function makeAvatar(o){
+  const g=new THREE.Group();g.position.set(o.x,0,o.z);g.rotation.y=o.ry;scene.add(g);
+  const skin=M(o.skin,{roughness:.75}),tee=M(o.tee,{roughness:.9}),pants=M(o.pants,{roughness:.9}),hair=M(o.hair,{roughness:.8}),shoe=M(0x1d1a18,{roughness:.6});
+  const part=(geo,mat,x,y,z,parent)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;m.userData.avatar=g;(parent||g).add(m);return m;};
+  [-.09,.09].forEach(x=>{part(new THREE.BoxGeometry(.11,.08,.25),shoe,x,.04,.03);part(new THREE.CylinderGeometry(.066,.06,.8,12),pants,x,.48,0);});
+  part(new THREE.CylinderGeometry(.17,.165,.2,20),pants,0,.92,0).scale.z=.72;
+  const torso=new THREE.Group();torso.position.y=1.0;g.add(torso);
+  part(new THREE.CylinderGeometry(.2,.17,.46,20),tee,0,.23,0,torso).scale.z=.7;
+  part(new THREE.SphereGeometry(.205,20,12,0,Math.PI*2,0,Math.PI/2),tee,0,.44,0,torso).scale.set(1,.42,.7);
+  // delantal terracota con el logo
+  const apron=part(new THREE.BoxGeometry(.34,.6,.012),M(0xffffff,{map:o.apronTex,roughness:.85}),0,.06,.135,torso);
+  part(new THREE.BoxGeometry(.36,.025,.01),M(0x8f3c20),0,.36,.128,torso);
+  part(new THREE.CylinderGeometry(.05,.055,.09,12),skin,0,.53,0,torso);
+  // brazos con pivote en el hombro
+  const arm=(side)=>{const a=new THREE.Group();a.position.set(side*.225,.43,0);torso.add(a);
+    part(new THREE.CylinderGeometry(.064,.06,.16,12),tee,0,-.07,0,a);
+    part(new THREE.CylinderGeometry(.046,.04,.44,12),skin,0,-.36,0,a);
+    part(new THREE.SphereGeometry(.052,12,10),skin,0,-.6,0,a);
+    a.rotation.z=side*.1;return a;};
+  const armL=arm(-1),armR=arm(1);
+  // cabeza
+  const head=new THREE.Group();head.position.y=.58;torso.add(head);
+  part(new THREE.SphereGeometry(.145,24,18),skin,0,.14,0,head).scale.set(1,1.08,1);
+  const eyeM=M(0x1d1410,{roughness:.3});const eyes=[-.052,.052].map(x=>part(new THREE.SphereGeometry(.017,10,8),eyeM,x,.16,.132,head));
+  [-.085,.085].forEach(x=>{const c=part(new THREE.SphereGeometry(.024,10,8),M(0xf08a7a,{roughness:.9,transparent:true,opacity:.55}),x,.115,.122,head);c.scale.z=.3;});
+  part(new THREE.SphereGeometry(.017,10,8),skin,0,.13,.148,head);
+  const smile=part(new THREE.TorusGeometry(.032,.006,6,16,Math.PI),M(0x5a2a1c),0,.098,.136,head);smile.rotation.z=Math.PI;
+  [-1,1].forEach(s=>part(new THREE.SphereGeometry(.03,10,8),skin,s*.143,.14,0,head).scale.set(.5,1,.8));
+  // pelo según estilo
+  const cap=new THREE.SphereGeometry(.155,24,14,0,Math.PI*2,0,Math.PI*.52);
+  if(o.style==='gorra'){part(cap,M(o.capColor,{roughness:.8}),0,.17,-.005,head).scale.set(1,.92,1.04);const br=part(new THREE.CylinderGeometry(.12,.12,.012,20,1,false,0,Math.PI),M(o.capColor),0,.205,.1,head);br.rotation.y=-Math.PI/2;br.rotation.x=.12;
+    part(new THREE.SphereGeometry(.15,16,10,0,Math.PI*2,Math.PI*.45,Math.PI*.25),hair,0,.15,-.01,head);}
+  else{part(cap,hair,0,.165,-.012,head).scale.set(1.02,1,1.06);
+    part(new THREE.SphereGeometry(.152,16,10,Math.PI*.15,Math.PI*.7,Math.PI*.35,Math.PI*.4),hair,0,.15,-.012,head).rotation.y=Math.PI;
+    if(o.style==='rodete')part(new THREE.SphereGeometry(.075,14,10),hair,0,.3,-.08,head);
+    if(o.style==='largo'){part(new THREE.BoxGeometry(.27,.32,.06),hair,0,.02,-.11,head);}
+    if(o.style==='rulos'){for(let i=0;i<14;i++){const a=i/14*Math.PI*2;part(new THREE.SphereGeometry(.05,10,8),hair,Math.cos(a)*.13,.22+Math.sin(i*1.7)*.03,Math.sin(a)*.12-.02,head);}}}
+  // pose inicial y accesorios
+  if(o.pose==='trabajando'){armL.rotation.x=-1.0;armR.rotation.x=-1.1;}
+  if(o.pose==='bandeja'){armL.rotation.set(-1.45,0,-.15);const tr=new THREE.Group();tr.position.set(0,-.6,0);tr.rotation.x=1.45;armL.add(tr);
+    part(new THREE.CylinderGeometry(.17,.17,.015,24),M(0x2a2a2a,{roughness:.3,metalness:.5}),0,0,0,tr);
+    part(new THREE.CylinderGeometry(.045,.035,.09,14),M(0xf7f5f0,{roughness:.2}),.05,.05,.02,tr);part(new THREE.CylinderGeometry(.04,.04,.008,14),M(0xb98656),.05,.094,.02,tr);
+    part(new THREE.CylinderGeometry(.05,.05,.03,14),M(0xd9a24a),-.07,.03,-.04,tr);}
+  const a={g,torso,head,armL,armR,eyes,o,base:{lx:armL.rotation.x,rx:armR.rotation.x,rz:armR.rotation.z},wave:0,blink:rnd(1,4),phase:rnd(0,6)};
+  avatars.push(a);return a;
+}
+// delantal con el logo de Trópico
+const apronTex=tex(170,300,(g,w,h)=>{g.fillStyle='#b34a22';g.fillRect(0,0,w,h);g.fillStyle='rgba(0,0,0,.12)';g.fillRect(0,h*.62,w,4);
+  if(logoWm.complete&&logoWm.naturalWidth){const s=(w*.7)/logoWm.width;g.drawImage(tint(logoWm,'#fbefe2'),w*.15,h*.18,logoWm.width*s,logoWm.height*s);}});
+redrawable.push(apronTex);
+[logoWm].forEach(i=>i.decode&&i.decode().then(()=>{apronTex.userData.draw(apronTex.userData.g,170,300);apronTex.needsUpdate=true;}).catch(()=>{}));
+
+const AV_DATA=[
+ {id:'cami',name:'Cami',role:'Pedidos y envíos',x:3.6,z:-2.2,ry:-Math.PI/2,skin:0xe8b796,tee:0x1d1d1f,pants:0x2b2f3a,hair:0x3a2216,style:'rodete',pose:'',apronTex,
+  hello:'¡Hola! Soy Cami. Te ayudo a armar tu pedido de la vitrina, para llevar o con envío a tu casa.',
+  soon:['Recomendarte algo de la vitrina','Armar tu pedido para retirar','Coordinar el envío a domicilio']},
+ {id:'nico',name:'Nico',role:'Barista',x:4.25,z:-3.15,ry:Math.PI/2,skin:0xc98d68,tee:0x1d1d1f,pants:0x3a3328,hair:0x1a1410,style:'gorra',capColor:0xcdbb9a,pose:'trabajando',apronTex,
+  hello:'¿Qué te preparo? Soy Nico, el barista. Te cuento de cada café y te recomiendo según tu gusto.',
+  soon:['Explicarte los métodos y los orígenes','Recomendarte un café según tu gusto','Sumar tu café al pedido']},
+ {id:'flor',name:'Flor',role:'Reservas',x:-4.85,z:-5.3,ry:2.0,skin:0xf0c8a8,tee:0x1d1d1f,pants:0x2a2a2a,hair:0x7a4424,style:'largo',pose:'bandeja',apronTex,
+  hello:'¡Bienvenido al salón! Soy Flor. Te reservo una mesa para que vengas cuando quieras.',
+  soon:['Reservar una mesa en el salón o el patio','Avisarte cuando tu pedido está listo','Contarte los horarios del local']},
+];
+AV_DATA.forEach(makeAvatar);
+const avMeshes=[];avatars.forEach(a=>a.g.traverse(m=>{if(m.isMesh)avMeshes.push(m);}));
+
+// etiquetas con nombre y tarjeta de presentación
+const avTagsEl=document.getElementById('avtags'),avCard=document.getElementById('avcard');
+avatars.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='avtag';b.innerHTML=`<b>${a.o.name}</b><small>${a.o.role}</small>`;b.addEventListener('click',()=>openAvatar(a));avTagsEl.appendChild(b);a.tag=b;});
+let avOpen=null;
+function openAvatar(a){avOpen=a;a.wave=1.6;
+  avCard.querySelector('[data-av-name]').textContent=a.o.name;
+  avCard.querySelector('[data-av-role]').textContent=a.o.role;
+  avCard.querySelector('[data-av-hello]').textContent=a.o.hello;
+  avCard.querySelector('[data-av-soon]').innerHTML=a.o.soon.map(s=>`<li>${s}</li>`).join('');
+  avCard.hidden=false;avCard.querySelector('.avcard-close').focus({preventScroll:true});}
+avCard.querySelector('.avcard-close').addEventListener('click',()=>{avCard.hidden=true;avOpen=null;});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!avCard.hidden){avCard.hidden=true;avOpen=null;}});
+// tocar al personaje en la escena 3D
+const ray=new THREE.Raycaster(),ndc=new THREE.Vector2();let downAt=null;
+const canvasEl=renderer.domElement;
+const pick=e=>{ndc.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1);ray.setFromCamera(ndc,camera);const h=ray.intersectObjects(avMeshes,false)[0];return h&&h.distance<9?avatars.find(a=>a.g===h.object.userData.avatar):null;};
+addEventListener('pointerdown',e=>{downAt=[e.clientX,e.clientY];},{passive:true});
+addEventListener('pointerup',e=>{if(!downAt||e.target.closest('button,a,.chap,.carta,.avcard'))return;const moved=Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1]);downAt=null;if(moved>8)return;const a=pick(e);if(a)openAvatar(a);});
+addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;document.body.style.cursor=pick(e)?'pointer':'';},{passive:true});
+
+const avTmp=new THREE.Vector3(),avCam=new THREE.Vector3();
+function updateAvatars(dt,t){
+  avatars.forEach(a=>{
+    const {g,torso,head,armL,armR,eyes}=a;
+    torso.scale.y=1+Math.sin(t*1.6+a.phase)*.008;
+    // mirar a la cámara si está cerca, con límite de giro
+    g.getWorldPosition(avTmp);avCam.copy(camera.position);
+    const dx=avCam.x-avTmp.x,dz=avCam.z-avTmp.z,dist=Math.hypot(dx,dz);
+    let yaw=Math.atan2(dx,dz)-g.rotation.y;yaw=Math.atan2(Math.sin(yaw),Math.cos(yaw));
+    const want=dist<8?Math.max(-1.1,Math.min(1.1,yaw)):Math.sin(t*.4+a.phase)*.25;
+    head.rotation.y+=(want*.75-head.rotation.y)*.06;torso.rotation.y+=(want*.25-torso.rotation.y)*.04;
+    head.rotation.x=Math.sin(t*.9+a.phase)*.03;
+    // parpadeo
+    a.blink-=dt;const bl=a.blink<0&&a.blink>-.12;eyes.forEach(e=>e.scale.y=bl?.15:1);if(a.blink<-.12)a.blink=rnd(2,5);
+    // gestos
+    if(a.o.pose==='trabajando'&&a.wave<=0){armR.rotation.x=a.base.rx+Math.sin(t*3+a.phase)*.12;armL.rotation.x=a.base.lx+Math.sin(t*3+a.phase+1.4)*.08;}
+    if(a.wave>0){a.wave-=dt;const k=Math.min(1,a.wave*3,(1.6-a.wave)*5);armR.rotation.z=a.base.rz+k*2.5+Math.sin(t*12)*.25*k;armR.rotation.x=a.base.rx*(1-k);}
+    else armR.rotation.z+=(a.base.rz-armR.rotation.z)*.1;
+    // etiqueta sobre la cabeza
+    head.getWorldPosition(avTmp);avTmp.y+=.5;const camD=avTmp.distanceTo(camera.position);avTmp.project(camera);
+    const vis=avTmp.z<1&&camD<7.5&&Math.abs(avTmp.x)<1.05&&Math.abs(avTmp.y)<1.05;
+    const op=vis?Math.min(1,(7.5-camD)/2):0;a.tag.style.opacity=op.toFixed(2);a.tag.style.pointerEvents=op>.4?'auto':'none';a.tag.tabIndex=op>.4?0:-1;
+    if(vis)a.tag.style.transform=`translate(${(avTmp.x*.5+.5)*innerWidth}px,${(-avTmp.y*.5+.5)*innerHeight}px) translate(-50%,-100%)`;
+  });
+}
+
 /* ---------- luces ---------- */
 const hemi=new THREE.HemisphereLight(0xdfeaf0,0x7a5a42,.6);scene.add(hemi);
 const sun=new THREE.DirectionalLight(0xffdcaa,1.55);const sunOff=new THREE.Vector3(-9,12,9);sun.target.position.set(0,1,2);sun.position.copy(sun.target.position).add(sunOff);scene.add(sun,sun.target);
@@ -680,6 +836,7 @@ function frameLoop(){
   const inside=sstep(.178,.32,cur)*(1-sstep(.769,.876,cur)),patio=sstep(.769,.876,cur);
   hemi.intensity=.6-.4*inside;sun.intensity=1.55*(1-.9*inside);renderer.toneMappingExposure=.95+.12*inside;
   snapTarget(0,1,2-18*patio);sun.position.copy(sun.target.position).add(sunOff);
+  updateAvatars(dt,t);
   renderer.render(scene,camera);
   let active=0;
   chaps.forEach((ch,i)=>{const w=.085;let o=Math.min(1,Math.max(0,(w-Math.abs(cur-ch.c))/(w*.5)));if(ch.first&&cur<ch.c)o=1;if(ch.last&&cur>ch.c)o=1;ch.o=o;ch.el.style.opacity=o.toFixed(3);ch.el.style.transform=`translateY(${(1-o)*18}px)`;ch.el.style.pointerEvents=o>.5?'auto':'none';});
