@@ -190,7 +190,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offse
 <section class="chap" data-c="0.889" data-name="Patio">
   <p class="eyebrow">El patio</p>
   <h2>Al aire libre, frente al mapa del mundo.</h2>
-  <p class="soft">Bancos de material con almohadones, piso de piedritas, plantas tropicales y mesas naranjas al sol.</p>
+  <p class="soft">Bancos de material con almohadones, piso de piedritas, plantas tropicales y mesas naranjas al sol. Mica te atiende afuera.</p>
 </section>
 
 <section class="chap" data-c="1" data-name="Visitanos">
@@ -734,6 +734,9 @@ const AV_DATA=[
  {id:'flor',name:'Flor',role:'Reservas',x:-4.85,z:-5.3,ry:2.0,skin:0xf0c8a8,tee:0x1d1d1f,pants:0x2a2a2a,hair:0x7a4424,style:'largo',pose:'bandeja',apronTex,
   hello:'¡Bienvenido al salón! Soy Flor. Te reservo una mesa para que vengas cuando quieras.',
   soon:['Reservar una mesa en el salón o el patio','Avisarte cuando tu pedido está listo','Contarte los horarios del local']},
+ {id:'mica',name:'Mica',role:'Atención en el patio',x:2.6,z:-15.2,ry:-1.1,skin:0xd9a07c,tee:0x1d1d1f,pants:0x3a3328,hair:0x2a1810,style:'rulos',pose:'bandeja',apronTex,
+  hello:'¡Hola! Soy Mica y atiendo el patio. Si te sentás afuera, te tomo el pedido y te lo llevo a la mesa.',
+  soon:['Tomarte el pedido en tu mesa del patio','Avisarte cuando sale tu café','Contarte qué hay de nuevo en la vitrina']},
 ];
 AV_DATA.forEach(makeAvatar);
 const avMeshes=[];avatars.forEach(a=>a.g.traverse(m=>{if(m.isMesh)avMeshes.push(m);}));
